@@ -14,14 +14,18 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
@@ -280,7 +284,237 @@ public class AuthView {
 		ventana.setTitle("registro"); 
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		ventana.setResizable(true); 
+			
+		Border border = BorderFactory.createLineBorder(Color.decode("#16404D"), 2);
 		
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(Color.decode("#FBF5DD"));
+		panel2.setOpaque(true); //se necesita para poder ver el color
+		panel2.setSize(500,500);
+		panel2.setLocation(0, 0);
+		panel2.setLayout(null);//permite poner los elementos donde quieras
+		
+		JLabel etq1 = new JLabel("REGISTRO");
+		etq1.setSize(200, 30);
+		etq1.setLocation(150, 10);
+		etq1.setHorizontalAlignment(JLabel.CENTER);
+		etq1.setFont(new Font ("Verdana", Font.BOLD, 30));
+		panel2.add(etq1);
+		
+		JLabel etq2 = new JLabel("");
+		etq2.setSize(500, 30);
+		etq2.setLocation(0, 60);
+		etq2.setBackground(Color.decode("#16404D"));
+		etq2.setOpaque(true);
+		etq2.setHorizontalAlignment(JLabel.CENTER);
+		etq2.setFont(new Font ("Verdana", Font.BOLD, 20));
+		etq2.setForeground(Color.decode("#FBFBFB"));
+		panel2.add(etq2);
+		
+		JLabel etq3 = new JLabel("Nombre de usuario:");
+		etq3.setSize(200, 30);
+		etq3.setLocation(40, 100);
+		etq3.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq3);
+		
+		JTextField nUsuario = new JTextField();
+		nUsuario.setSize(300, 30);
+		nUsuario.setLocation(38, 130);
+		nUsuario.setOpaque(true);
+		nUsuario.setBackground(Color.decode("#A6CDC6"));
+		nUsuario.setFont(new Font ("Verdana", Font.BOLD, 16));
+		nUsuario.setBorder(border);
+		nUsuario.addActionListener(null);
+		panel2.add(nUsuario);
+		
+		JLabel etq4 = new JLabel("Contraseña:");
+		etq4.setSize(200, 30);
+		etq4.setLocation(40, 170);
+		etq4.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq4);
+		
+		JTextField cUsuario = new JPasswordField();
+		cUsuario.setSize(300, 30);
+		cUsuario.setLocation(38, 200);
+		cUsuario.setOpaque(true);
+		cUsuario.setBackground(Color.decode("#A6CDC6"));
+		cUsuario.setFont(new Font ("Verdana", Font.BOLD, 16));
+		cUsuario.setBorder(border);
+		panel2.add(cUsuario);
+		
+		JLabel etq5 = new JLabel("Repetir Contraseña:");
+		etq5.setSize(200, 30);
+		etq5.setLocation(40, 240);
+		etq5.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq5);
+		
+		JTextField corrUsuario = new JTextField();
+		corrUsuario.setSize(300, 30);
+		corrUsuario.setLocation(38, 270);
+		corrUsuario.setOpaque(true);
+		corrUsuario.setBackground(Color.decode("#A6CDC6"));
+		corrUsuario.setFont(new Font ("Verdana", Font.BOLD, 16));
+		corrUsuario.setBorder(border);
+		panel2.add(corrUsuario);
+		
+		JLabel etq6 = new JLabel("Correo:");
+		etq6.setSize(200, 30);
+		etq6.setLocation(40, 300);
+		etq6.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq6);
+		
+		JTextField bio = new  JTextField(); //field correo
+		bio.setSize(300, 30);
+		bio.setLocation(38, 340);
+		bio.setOpaque(true);
+		bio.setBackground(Color.decode("#A6CDC6"));
+		bio.setFont(new Font ("Verdana", Font.BOLD, 16));
+		bio.setBorder(border);
+		panel2.add(bio);
+		
+		JLabel etq7 = new JLabel("Nombre:");
+		etq7.setSize(200, 30);
+		etq7.setLocation(40, 380);
+		etq7.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq7);
+		
+		JTextField nombre = new  JTextField(); 
+		nombre.setSize(300, 30);
+		nombre.setLocation(38, 410);
+		nombre.setOpaque(true);
+		nombre.setBackground(Color.decode("#A6CDC6"));
+		nombre.setFont(new Font ("Verdana", Font.BOLD, 16));
+		nombre.setBorder(border);
+		panel2.add(nombre);
+		
+		JLabel etq11 = new JLabel("Apellidos:");
+		etq11.setSize(200, 30);
+		etq11.setLocation(40, 450);
+		etq11.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq11);
+		
+		JTextField apellidos = new  JTextField(); 
+		apellidos.setSize(300, 30);
+		apellidos.setLocation(38, 480);
+		apellidos.setOpaque(true);
+		apellidos.setBackground(Color.decode("#A6CDC6"));
+		apellidos.setFont(new Font ("Verdana", Font.BOLD, 16));
+		apellidos.setBorder(border);
+		panel2.add(apellidos);
+		
+		JLabel etq8 = new JLabel("Empresa:");
+		etq8.setSize(200, 30);
+		etq8.setLocation(40, 520);
+		etq8.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq8);
+		
+		JTextField empresa = new  JTextField(); 
+		empresa.setSize(300, 30);
+		empresa.setLocation(38, 550);
+		empresa.setOpaque(true);
+		empresa.setBackground(Color.decode("#A6CDC6"));
+		empresa.setFont(new Font ("Verdana", Font.BOLD, 16));
+		empresa.setBorder(border);
+		panel2.add(empresa);
+		
+		JLabel etq12 = new JLabel("Ámbito de la empresa:");
+		etq12.setSize(200, 30);
+		etq12.setLocation(40, 590);
+		etq12.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq12);
+		
+		String[] opciones = {"Tecnología", "Salud", "Educación", "Comercio", "Otro"};
+		JComboBox<String> colonias = new JComboBox<>(opciones);
+		colonias.setSize(200, 30);
+		colonias.setLocation(40, 620);
+		colonias.setFont(new Font ("Verdana", Font.BOLD, 14));
+		panel2.add(colonias);
+		
+		JLabel etq10 = new JLabel("Puesto:");
+		etq10.setSize(350, 30);
+		etq10.setLocation(40, 660);
+		etq10.setFont(new Font ("Verdana", Font.BOLD, 16));
+		panel2.add(etq10);
+		
+		JTextField puesto = new  JTextField(); 
+		puesto.setSize(300, 30);
+		puesto.setLocation(38, 690);
+		puesto.setOpaque(true);
+		puesto.setBackground(Color.decode("#A6CDC6"));
+		puesto.setFont(new Font ("Verdana", Font.BOLD, 16));
+		puesto.setBorder(border);
+		panel2.add(puesto);
+		
+		
+		JButton  confirmar = new JButton ("Crear Cuenta");
+		confirmar.setSize(200, 40);
+		confirmar.setLocation(20, 730);
+		confirmar.setOpaque(true);
+		confirmar.setBackground(Color.decode("#DDA853"));
+		confirmar.setHorizontalAlignment(JButton.CENTER);
+		confirmar.setFont(new Font ("Verdana", Font.BOLD, 20));
+		
+		confirmar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				if(nUsuario.getText().equals("")) {
+					nUsuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					nUsuario.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(cUsuario.getText().equals("")) {
+					cUsuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					cUsuario.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(corrUsuario.getText().equals("")) {
+					corrUsuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					corrUsuario.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(bio.getText().equals("")) {
+					bio.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					bio.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+			}
+		});
+
+		panel2.add(confirmar);
+		
+		JButton  irLogin = new JButton ("Regresar");
+		irLogin.setSize(200, 40);
+		irLogin.setLocation(250, 730);
+		irLogin.setOpaque(true);
+		irLogin.setBackground(Color.decode("#DDA853"));
+		irLogin.setHorizontalAlignment(JButton.CENTER);
+		irLogin.setFont(new Font ("Verdana", Font.BOLD, 20));
+		irLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {	
+				ventana.dispose();
+ 				AuthView.this.login();
+			}
+		});
+		panel2.add(irLogin);
+		
+		ImageIcon imagen3 = new ImageIcon(this.getClass().getResource("/images/fondoLog.png"));
+		JLabel fondoLog = new JLabel();
+		fondoLog.setSize(700, 800);
+		fondoLog.setLocation(500, 0);
+		fondoLog.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(700, 800, Image.SCALE_SMOOTH)));
+		panel2.add(fondoLog);
+		
+		ventana.add(panel2);
+		ventana.repaint();
+		ventana.revalidate();
 		
 	}
 	
