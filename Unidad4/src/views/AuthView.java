@@ -190,13 +190,13 @@ public class AuthView {
 				
 				}
 				if(bandera1&&bandera2) {
-					if(email.getText().equals("jjimenez_23@alu.uabcs.mx")) {
-						if(new String(contra.getPassword()).equals("contraseña")) {
+					
+					AuthModel am = new AuthModel();
+					boolean is_login = am.login(email.getText(), new String(contra.getPassword()));
+					if(is_login) {
+						
 							JOptionPane.showMessageDialog(null, "Beinvenido de nuevo","hello",JOptionPane.WARNING_MESSAGE);
-						}
-						else{
-							JOptionPane.showMessageDialog(null, "Contraseña o correo invalido","error",JOptionPane.WARNING_MESSAGE);
-						}
+						
 					}else {
 						JOptionPane.showMessageDialog(null, "Contraseña o correo invalido","error",JOptionPane.WARNING_MESSAGE);
 					}
@@ -275,7 +275,6 @@ public class AuthView {
 	
 	public void register()
 	{ 	
-		System.out.println("Hola");
 		JFrame ventana = new JFrame();
 		
 		ventana.setVisible(true);
@@ -348,14 +347,14 @@ public class AuthView {
 		etq5.setFont(new Font ("Verdana", Font.BOLD, 16));
 		panel2.add(etq5);
 		
-		JTextField corrUsuario = new JTextField();
-		corrUsuario.setSize(300, 30);
-		corrUsuario.setLocation(38, 270);
-		corrUsuario.setOpaque(true);
-		corrUsuario.setBackground(Color.decode("#A6CDC6"));
-		corrUsuario.setFont(new Font ("Verdana", Font.BOLD, 16));
-		corrUsuario.setBorder(border);
-		panel2.add(corrUsuario);
+		JTextField repetirContra = new JTextField();
+		repetirContra.setSize(300, 30);
+		repetirContra.setLocation(38, 270);
+		repetirContra.setOpaque(true);
+		repetirContra.setBackground(Color.decode("#A6CDC6"));
+		repetirContra.setFont(new Font ("Verdana", Font.BOLD, 16));
+		repetirContra.setBorder(border);
+		panel2.add(repetirContra);
 		
 		JLabel etq6 = new JLabel("Correo:");
 		etq6.setSize(200, 30);
@@ -363,14 +362,14 @@ public class AuthView {
 		etq6.setFont(new Font ("Verdana", Font.BOLD, 16));
 		panel2.add(etq6);
 		
-		JTextField bio = new  JTextField(); //field correo
-		bio.setSize(300, 30);
-		bio.setLocation(38, 340);
-		bio.setOpaque(true);
-		bio.setBackground(Color.decode("#A6CDC6"));
-		bio.setFont(new Font ("Verdana", Font.BOLD, 16));
-		bio.setBorder(border);
-		panel2.add(bio);
+		JTextField email = new  JTextField(); //field correo
+		email.setSize(300, 30);
+		email.setLocation(38, 340);
+		email.setOpaque(true);
+		email.setBackground(Color.decode("#A6CDC6"));
+		email.setFont(new Font ("Verdana", Font.BOLD, 16));
+		email.setBorder(border);
+		panel2.add(email);
 		
 		JLabel etq7 = new JLabel("Nombre:");
 		etq7.setSize(200, 30);
@@ -393,14 +392,14 @@ public class AuthView {
 		etq11.setFont(new Font ("Verdana", Font.BOLD, 16));
 		panel2.add(etq11);
 		
-		JTextField apellidos = new  JTextField(); 
-		apellidos.setSize(300, 30);
-		apellidos.setLocation(38, 480);
-		apellidos.setOpaque(true);
-		apellidos.setBackground(Color.decode("#A6CDC6"));
-		apellidos.setFont(new Font ("Verdana", Font.BOLD, 16));
-		apellidos.setBorder(border);
-		panel2.add(apellidos);
+		JTextField apellido = new  JTextField(); 
+		apellido.setSize(300, 30);
+		apellido.setLocation(38, 480);
+		apellido.setOpaque(true);
+		apellido.setBackground(Color.decode("#A6CDC6"));
+		apellido.setFont(new Font ("Verdana", Font.BOLD, 16));
+		apellido.setBorder(border);
+		panel2.add(apellido);
 		
 		JLabel etq8 = new JLabel("Empresa:");
 		etq8.setSize(200, 30);
@@ -458,6 +457,13 @@ public class AuthView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				String usuario = nUsuario.getText();
+		        String contra = cUsuario.getText();
+		        String repetir = repetirContra.getText();
+		        String correo = email.getText();
+		        String nombreTxt = nombre.getText();
+		        String apellidoTxt = apellido.getText();
 			
 				if(nUsuario.getText().equals("")) {
 					nUsuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
@@ -471,18 +477,49 @@ public class AuthView {
 					cUsuario.setBorder(BorderFactory.createLineBorder(Color.green,3));
 				}
 				
-				if(corrUsuario.getText().equals("")) {
-					corrUsuario.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				if(repetirContra.getText().equals("")) {
+					repetirContra.setBorder(BorderFactory.createLineBorder(Color.red,3));
 				}else {
-					corrUsuario.setBorder(BorderFactory.createLineBorder(Color.green,3));
+					repetirContra.setBorder(BorderFactory.createLineBorder(Color.green,3));
 				}
 				
-				if(bio.getText().equals("")) {
-					bio.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				if(email.getText().equals("")) {
+					email.setBorder(BorderFactory.createLineBorder(Color.red,3));
 				}else {
-					bio.setBorder(BorderFactory.createLineBorder(Color.green,3));
+					email.setBorder(BorderFactory.createLineBorder(Color.green,3));
 				}
 				
+				if(nombre.getText().equals("")) {
+					nombre.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					nombre.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(apellido.getText().equals("")) {
+					apellido.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					apellido.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(empresa.getText().equals("")) {
+					empresa.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					empresa.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				if(puesto.getText().equals("")) {
+					puesto.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}else {
+					puesto.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+				
+				 AuthModel modelo = new AuthModel();
+			        boolean registrado = modelo.registrarUsuario(nombreTxt, apellidoTxt, correo, contra, repetir);
+
+			        if (registrado) {
+			            ventana.dispose(); 
+			            login();
+			        }
 			}
 		});
 
